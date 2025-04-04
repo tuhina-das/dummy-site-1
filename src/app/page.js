@@ -27,6 +27,69 @@ const products = [
     image: "/vercel.svg",
     tags: ["blouse", "classic", "office"],
   },
+  {
+    id: 4,
+    name: "Summer Dress",
+    price: "$29.99",
+    image: "/vercel.svg",
+    tags: ["dress", "summer", "fashion"],
+  },
+  {
+    id: 5,
+    name: "Floral Skirt",
+    price: "$24.99",
+    image: "/vercel.svg",
+    tags: ["skirt", "floral", "casual"],
+  },
+  {
+    id: 6,
+    name: "Classic Blouse",
+    price: "$19.99",
+    image: "/vercel.svg",
+    tags: ["blouse", "classic", "office"],
+  },
+  {
+    id: 7,
+    name: "Summer Dress",
+    price: "$29.99",
+    image: "/vercel.svg",
+    tags: ["dress", "summer", "fashion"],
+  },
+  {
+    id: 8,
+    name: "Floral Skirt",
+    price: "$24.99",
+    image: "/vercel.svg",
+    tags: ["skirt", "floral", "casual"],
+  },
+  {
+    id: 9,
+    name: "Classic Blouse",
+    price: "$19.99",
+    image: "/vercel.svg",
+    tags: ["blouse", "classic", "office"],
+  },
+  {
+    id: 10,
+    name: "Summer Dress",
+    price: "$29.99",
+    image: "/vercel.svg",
+    tags: ["dress", "summer", "fashion"],
+  },
+  {
+    id: 11,
+    name: "Floral Skirt",
+    price: "$24.99",
+    image: "/vercel.svg",
+    tags: ["skirt", "floral", "casual"],
+  },
+  {
+    id: 12,
+    name: "Classic Blouse",
+    price: "$19.99",
+    image: "/vercel.svg",
+    tags: ["blouse", "classic", "office"],
+  },
 ];
 
 export default function HomePage() {
@@ -50,8 +113,16 @@ export default function HomePage() {
         transition={{ duration: 0.5 }}
         className="text-4xl font-bold text-center mb-4"
       >
-        Shop the Latest Trends
+        Welcome to the Coolest Store Ever
       </motion.h1>
+      <motion.h2
+        initial={{ y: -20, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.5 }}
+        className="text-center py-2 text-lg text-gray-600 mb-8"
+      >
+        Shop for your favorite products at our store
+      </motion.h2>
 
       <form onSubmit={handleSearch} className="flex justify-center mb-8">
         <input
