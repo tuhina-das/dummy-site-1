@@ -1,41 +1,67 @@
 "use client";
-import React, { use } from "react";
+import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { ShoppingBag, Star } from "lucide-react";
+
 const products = [
   {
     id: 1,
     name: "Summer Dress",
     price: "$29.99",
-    image: "/next.svg",
+    image: "/vercel.svg",
+    tags: ["dress", "summer", "fashion"],
   },
   {
     id: 2,
     name: "Floral Skirt",
     price: "$24.99",
-    image: "/next.svg",
+    image: "/vercel.svg",
+    tags: ["skirt", "floral", "casual"],
   },
   {
     id: 3,
     name: "Classic Blouse",
     price: "$19.99",
-    image: "/next.svg",
+    image: "/vercel.svg",
+    tags: ["blouse", "classic", "office"],
   },
 ];
 
 export default function HomePage() {
+  const [searchQuery, setSearchQuery] = useState("");
+
+  const filteredProducts = products.filter((product) =>
+    product.tags.some((tag) =>
+      tag.toLowerCase().includes(searchQuery.toLowerCase())
+    )
+  );
+
+  const handleSearch = (event) => {
+    event.preventDefault();
+  };
+
   return (
     <div className="min-h-screen bg-white text-black px-4 py-8">
       <motion.h1
         initial={{ y: -20, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.5 }}
-        className="text-3xl font-bold text-center mb-8"
+        className="text-4xl font-bold text-center mb-4"
       >
-        Welcome to My E-Commerce Store
+        Shop the Latest Trends
       </motion.h1>
+
+      <form onSubmit={handleSearch} className="flex justify-center mb-8">
+        <input
+          type="text"
+          placeholder="Search for products..."
+          value={searchQuery}
+          onChange={(e) => setSearchQuery(e.target.value)}
+          className="w-full max-w-md px-4 py-2 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-black"
+        />
+      </form>
 
       <motion.div
         initial={{ opacity: 0 }}
@@ -43,7 +69,7 @@ export default function HomePage() {
         transition={{ delay: 0.3, duration: 0.8 }}
         className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6"
       >
-        {products.map((product) => (
+        {filteredProducts.map((product) => (
           <Card
             key={product.id}
             className="rounded-2xl shadow-lg overflow-hidden"
