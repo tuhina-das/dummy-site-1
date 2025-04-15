@@ -4,105 +4,113 @@ import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { ShoppingBag, Star } from "lucide-react";
+import { useSearchParams, useRouter } from "next/navigation";
 
-const products = [
-  {
-    id: 1,
-    name: "Summer Dress",
-    price: "$29.99",
-    image: "/next.svg",
-    tags: ["dress", "summer", "fashion"],
-  },
-  {
-    id: 2,
-    name: "Floral Skirt",
-    price: "$24.99",
-    image: "/next.svg",
-    tags: ["skirt", "floral", "casual"],
-  },
-  {
-    id: 3,
-    name: "Classic Blouse",
-    price: "$19.99",
-    image: "/next.svg",
-    tags: ["blouse", "classic", "office"],
-  },
-  {
-    id: 4,
-    name: "Summer Dress",
-    price: "$29.99",
-    image: "/next.svg",
-    tags: ["dress", "summer", "fashion"],
-  },
-  {
-    id: 5,
-    name: "Floral Skirt",
-    price: "$24.99",
-    image: "/next.svg",
-    tags: ["skirt", "floral", "casual"],
-  },
-  {
-    id: 6,
-    name: "Classic Blouse",
-    price: "$19.99",
-    image: "/next.svg",
-    tags: ["blouse", "classic", "office"],
-  },
-  {
-    id: 7,
-    name: "Summer Dress",
-    price: "$29.99",
-    image: "/next.svg",
-    tags: ["dress", "summer", "fashion"],
-  },
-  {
-    id: 8,
-    name: "Floral Skirt",
-    price: "$24.99",
-    image: "/next.svg",
-    tags: ["skirt", "floral", "casual"],
-  },
-  {
-    id: 9,
-    name: "Classic Blouse",
-    price: "$19.99",
-    image: "/next.svg",
-    tags: ["blouse", "classic", "office"],
-  },
-  {
-    id: 10,
-    name: "Summer Dress",
-    price: "$29.99",
-    image: "/next.svg",
-    tags: ["dress", "summer", "fashion"],
-  },
-  {
-    id: 11,
-    name: "Floral Skirt",
-    price: "$24.99",
-    image: "/next.svg",
-    tags: ["skirt", "floral", "casual"],
-  },
-  {
-    id: 12,
-    name: "Classic Blouse",
-    price: "$19.99",
-    image: "/next.svg",
-    tags: ["blouse", "classic", "office"],
-  },
-];
+export default function Home() {
+  const products = [
+    {
+      id: 1,
+      name: "Summer Dress",
+      price: "$29.99",
+      image: "/next.svg",
+      tags: ["dress", "summer", "fashion"],
+    },
+    {
+      id: 2,
+      name: "Floral Skirt",
+      price: "$24.99",
+      image: "/next.svg",
+      tags: ["skirt", "floral", "casual"],
+    },
+    {
+      id: 3,
+      name: "Classic Blouse",
+      price: "$19.99",
+      image: "/next.svg",
+      tags: ["blouse", "classic", "office"],
+    },
+    {
+      id: 4,
+      name: "Summer Dress",
+      price: "$29.99",
+      image: "/next.svg",
+      tags: ["dress", "summer", "fashion"],
+    },
+    {
+      id: 5,
+      name: "Floral Skirt",
+      price: "$24.99",
+      image: "/next.svg",
+      tags: ["skirt", "floral", "casual"],
+    },
+    {
+      id: 6,
+      name: "Classic Blouse",
+      price: "$19.99",
+      image: "/next.svg",
+      tags: ["blouse", "classic", "office"],
+    },
+    {
+      id: 7,
+      name: "Summer Dress",
+      price: "$29.99",
+      image: "/next.svg",
+      tags: ["dress", "summer", "fashion"],
+    },
+    {
+      id: 8,
+      name: "Floral Skirt",
+      price: "$24.99",
+      image: "/next.svg",
+      tags: ["skirt", "floral", "casual"],
+    },
+    {
+      id: 9,
+      name: "Classic Blouse",
+      price: "$19.99",
+      image: "/next.svg",
+      tags: ["blouse", "classic", "office"],
+    },
+    {
+      id: 10,
+      name: "Summer Dress",
+      price: "$29.99",
+      image: "/next.svg",
+      tags: ["dress", "summer", "fashion"],
+    },
+    {
+      id: 11,
+      name: "Floral Skirt",
+      price: "$24.99",
+      image: "/next.svg",
+      tags: ["skirt", "floral", "casual"],
+    },
+    {
+      id: 12,
+      name: "Classic Blouse",
+      price: "$19.99",
+      image: "/next.svg",
+      tags: ["blouse", "classic", "office"],
+    },
+  ];
 
-export default function HomePage() {
-  const [searchQuery, setSearchQuery] = useState("");
+  const router = useRouter();
+  const searchParams = useSearchParams();
+  const [searchQuery, setSearchQuery] = useState(
+    searchParams.get("search") || ""
+  );
 
   const filteredProducts = products.filter((product) =>
     product.tags.some((tag) =>
-      tag.toLowerCase().includes(searchQuery.toLowerCase())
+      tag.toLowerCase().includes((searchQuery || "").toLowerCase())
     )
   );
 
   const handleSearch = (event) => {
     event.preventDefault();
+    const input = event.target.elements.searchInput.value;
+    const encoded = encodeURIComponent(input);
+    router.push(`/?search=${encoded}`);
   };
 
   return (
@@ -127,6 +135,7 @@ export default function HomePage() {
       <form onSubmit={handleSearch} className="flex justify-center mb-8">
         <input
           type="text"
+          name="searchInput"
           placeholder="Search for products..."
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
