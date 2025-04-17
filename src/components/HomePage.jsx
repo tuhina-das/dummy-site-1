@@ -26,7 +26,7 @@ export default function HomePage() {
       id: 3,
       name: "Classic Blouse",
       price: "$19.99",
-      image: "/next.svg",
+      image: "/seal_plush.webp",
       tags: ["blouse", "classic", "office"],
     },
     {
@@ -47,7 +47,7 @@ export default function HomePage() {
       id: 6,
       name: "Classic Blouse",
       price: "$19.99",
-      image: "/next.svg",
+      image: "/seal_plush.webp",
       tags: ["blouse", "classic", "office"],
     },
     {
@@ -68,7 +68,7 @@ export default function HomePage() {
       id: 9,
       name: "Classic Blouse",
       price: "$19.99",
-      image: "/next.svg",
+      image: "/seal_plush.webp",
       tags: ["blouse", "classic", "office"],
     },
     {
@@ -89,7 +89,7 @@ export default function HomePage() {
       id: 12,
       name: "Classic Blouse",
       price: "$19.99",
-      image: "/next.svg",
+      image: "/seal_plush.webp",
       tags: ["blouse", "classic", "office"],
     },
   ];
