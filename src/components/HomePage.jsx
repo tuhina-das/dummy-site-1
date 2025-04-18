@@ -19,7 +19,7 @@ export default function HomePage() {
       id: 2,
       name: "Floral Skirt",
       price: "$24.99",
-      image: "/next.svg",
+      image: "/cutesun.png",
       tags: ["skirt", "floral", "casual"],
     },
     {
@@ -40,7 +40,7 @@ export default function HomePage() {
       id: 5,
       name: "Floral Skirt",
       price: "$24.99",
-      image: "/next.svg",
+      image: "/cutesun.png",
       tags: ["skirt", "floral", "casual"],
     },
     {
