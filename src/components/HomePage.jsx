@@ -26,7 +26,7 @@ export default function HomePage() {
       id: 3,
       name: "Classic Blouse",
       price: "$19.99",
-      image: "/seal_plush.webp",
+      image: "/cutesun.png",
       tags: ["blouse", "classic", "office"],
     },
     {
@@ -47,7 +47,7 @@ export default function HomePage() {
       id: 6,
       name: "Classic Blouse",
       price: "$19.99",
-      image: "/seal_plush.webp",
+      image: "/cutesun.png",
       tags: ["blouse", "classic", "office"],
     },
     {
